@@ -1,6 +1,6 @@
 # Fullstack Java Project
 
-## Mehmet Furkan Karakoc (3TINA)
+## Mehmet Furkan Karakoc (3AONA)
 
 ## Folder structure
 
