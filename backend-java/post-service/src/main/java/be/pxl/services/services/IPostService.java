@@ -1,8 +1,8 @@
 package be.pxl.services.services;
 
-import be.pxl.services.controller.Response.PostResponse;
+import be.pxl.services.controller.response.PostResponse;
 import be.pxl.services.domain.Post;
-import be.pxl.services.controller.Request.PostRequest;
+import be.pxl.services.controller.request.PostRequest;
 
 import java.util.List;
 

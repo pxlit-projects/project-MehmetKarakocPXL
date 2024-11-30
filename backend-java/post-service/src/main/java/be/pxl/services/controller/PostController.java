@@ -1,11 +1,10 @@
 package be.pxl.services.controller;
 
-import be.pxl.services.controller.Request.PostRequest;
-import be.pxl.services.controller.Response.PostResponse;
+import be.pxl.services.controller.request.PostRequest;
+import be.pxl.services.controller.response.PostResponse;
 import be.pxl.services.domain.Post;
 import be.pxl.services.services.IPostService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
