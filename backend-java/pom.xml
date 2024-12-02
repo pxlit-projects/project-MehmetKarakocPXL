@@ -28,6 +28,9 @@
 		<module>config-service</module>
 		<module>discovery-service</module>
 		<module>notification-service</module>
+        <module>gateway-service</module>
+		<module>messaging-service</module>
+		<module>proxy-service</module>
 	</modules>
 	<scm>
 		<connection/>
@@ -40,10 +43,10 @@
 		<spring.cloud-version>2023.0.3</spring.cloud-version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-		</dependency>s
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.cloud</groupId>-->
+<!--			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>

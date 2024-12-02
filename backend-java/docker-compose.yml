@@ -40,6 +40,13 @@ services:
     volumes:
       - mysql-review-data:/var/lib/mysql
 
+  rabbitmq:
+    image: "rabbitmq:3-management-alpine"
+    ports:
+      - "5672:5672"  # RabbitMQ default port
+      - "15672:15672"  # RabbitMQ Management Console
+    restart: always
+
 volumes:
   mysql-post-data:
   mysql-comment-data:
