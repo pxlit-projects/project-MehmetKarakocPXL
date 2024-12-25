@@ -1,0 +1,70 @@
+<div class="container mx-auto p-4 w-[50%]">
+  <!-- Post Details -->
+  <div *ngIf="post" class="mb-6 p-4 border rounded shadow">
+    <h3 class="text-lg font-bold mb-2">{{ post.title }}</h3>
+    <p class="text-sm text-gray-600 mb-2">
+      By {{ post.author }} on {{ post.createdDate | date: 'MMM d, yyyy, h:mm a' }}
+    </p>
+    <p>{{ post.content }}</p>
+  </div>
+
+  <!-- Comments Section -->
+  <div>
+    <h4 class="text-lg font-semibold mb-4">Comments</h4>
+    <ul class="space-y-4">
+      @for (comment of comments; track comment.id) {
+        <li class="p-4 border rounded shadow">
+          <p class="text-sm text-gray-600 mb-1">
+            By {{ comment.author }} on {{ comment.createdDate | date: 'MMM d, yyyy, h:mm a' }}
+          </p>
+          <p *ngIf="!isEditingComment(comment.id)">{{ comment.content }}</p>
+          <textarea
+            *ngIf="isEditingComment(comment.id)"
+            [(ngModel)]="editableCommentContent"
+            class="w-full p-2 border rounded"
+          ></textarea>
+
+          <!-- Actions -->
+          <div class="flex justify-between items-center mt-2">
+            <button
+              *ngIf="!isEditingComment(comment.id) && canDeleteOrEditComment(comment)"
+              (click)="startEditingComment(comment)"
+              class="text-blue-500 hover:underline"
+            >
+              Edit
+            </button>
+            <button
+              *ngIf="isEditingComment(comment.id)"
+              (click)="updateComment(comment.id)"
+              class="text-green-500 hover:underline"
+            >
+              Save
+            </button>
+            <button
+              *ngIf="canDeleteOrEditComment(comment)"
+              (click)="deleteComment(comment.id)"
+              class="text-red-500 hover:underline"
+            >
+              Delete
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <!-- Add Comment -->
+    <div class="mt-6">
+      <textarea
+        [(ngModel)]="newComment.content"
+        placeholder="Add a comment..."
+        class="w-full p-2 border rounded"
+      ></textarea>
+      <button
+        (click)="addComment()"
+        class="mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

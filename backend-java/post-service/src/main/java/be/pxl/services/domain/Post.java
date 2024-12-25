@@ -23,7 +23,10 @@ public class Post {
     private String author;
     private String title;
     private String content;
-    private boolean isConcept;
+    private Boolean isConcept;
+
+    @Enumerated(EnumType.STRING)
+    private PostStatus status;
 
     @CreationTimestamp
     @Column(name = "created_date", updatable = false)

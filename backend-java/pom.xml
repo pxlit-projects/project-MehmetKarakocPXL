@@ -27,10 +27,7 @@
 		<module>review-service</module>
 		<module>config-service</module>
 		<module>discovery-service</module>
-		<module>notification-service</module>
         <module>gateway-service</module>
-		<module>messaging-service</module>
-		<module>proxy-service</module>
 	</modules>
 	<scm>
 		<connection/>

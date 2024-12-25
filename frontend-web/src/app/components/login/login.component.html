@@ -1,0 +1,67 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white shadow-md rounded-lg p-8 max-w-sm w-full">
+
+      <!-- Header -->
+      <h2 class="text-2xl font-bold text-center text-gray-800">Welcome Back</h2>
+      <p class="text-sm text-gray-500 text-center mb-6">
+        Please sign in to continue
+      </p>
+  
+      <!-- Form -->
+      <form (ngSubmit)="login()">
+        <!-- Username Field -->
+        <div class="mb-4">
+          <label
+            for="username"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Username</label
+          >
+          <input
+            id="username"
+            type="text"
+            [(ngModel)]="username"
+            name="username"
+            placeholder="Enter your username"
+            required
+            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          />
+        </div>
+  
+        <!-- Role Selection -->
+        <div class="mb-6">
+          <label class="block text-sm font-medium text-gray-700 mb-1"
+            >Select Role</label
+          >
+          <div class="flex space-x-2">
+            <button
+              type="button"
+              class="flex-1 px-4 py-2 border rounded-md text-gray-700 hover:bg-blue-400"
+              [class.bg-blue-500]="role === 'user'"
+              [class.text-white]="role === 'user'"
+              (click)="selectRole('user')"
+            >
+              <i class="fas fa-user mr-2"></i>User
+            </button>
+            <button
+              type="button"
+              class="flex-1 px-4 py-2 border rounded-md text-gray-700 hover:bg-blue-400"
+              [class.bg-blue-500]="role === 'admin'"
+              [class.text-white]="role === 'admin'"
+              (click)="selectRole('admin')"
+            >
+              <i class="fas fa-shield-alt mr-2"></i>Admin
+            </button>
+          </div>
+        </div>
+  
+        <!-- Login Button -->
+        <button
+          (click)="login()"
+          class="w-full py-2 px-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        >
+          <i class="fas fa-lock mr-2"></i>Login
+        </button>
+      </form>
+  
+    </div>
+  </div>

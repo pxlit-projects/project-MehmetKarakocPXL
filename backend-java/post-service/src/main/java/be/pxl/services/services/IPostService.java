@@ -1,18 +1,32 @@
 package be.pxl.services.services;
 
+import be.pxl.services.controller.request.NotificationRequest;
 import be.pxl.services.controller.response.PostResponse;
-import be.pxl.services.domain.Post;
+import be.pxl.services.domain.Notification;
 import be.pxl.services.controller.request.PostRequest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IPostService {
 
-    List<Post> getAllPosts();
+    PostResponse getPostById(Long postId);
 
-    Long addPost(PostRequest postRequest);
+    List<PostResponse> getAllPosts();
 
-    PostResponse updatePost(Long postId, PostRequest postRequest);
+    List<PostResponse> getAllPublishedPosts();
 
-    List<Post> getAllPostsSorted(String sortBy);
+    List<PostResponse> getAllToBeReviewedPosts();
+
+    void addPost(PostRequest postRequest);
+
+    void updatePost(Long postId, PostRequest postRequest);
+
+    List<PostResponse> getFilteredPosts(String content, String author, LocalDate date);
+
+    String getAuthorByPostId(Long postId);
+
+    void saveNotification(NotificationRequest notificationRequest);
+
+    List<Notification> getNotificationsByAuthor(String author);
 }
