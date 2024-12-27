@@ -28,3 +28,4 @@
 2024-12-27T16:27:08.267+0100 INFO               [http-nio-8083-exec-7]         be.pxl.services.controller.ReviewController - Review added for post ID: 6
 2024-12-27T16:27:24.370+0100 INFO               [http-nio-8083-exec-2]         be.pxl.services.controller.ReviewController - Review added for post ID: 6
 2024-12-27T16:27:24.936+0100 INFO               [http-nio-8083-exec-4]         be.pxl.services.controller.ReviewController - Review added for post ID: 6
+2024-12-27T18:52:48.750+0100 INFO               [http-nio-8083-exec-3]         be.pxl.services.controller.ReviewController - Review added for post ID: 7

@@ -27,6 +27,10 @@ export class AuthService {
     return this.getRole() === 'admin';
   }
 
+  isLoggedIn(): boolean {
+    return this.getRole() !== null;
+  }
+
   logout(): void {
     localStorage.removeItem(this.ROLE_KEY);
     localStorage.removeItem(this.USERNAME_KEY);

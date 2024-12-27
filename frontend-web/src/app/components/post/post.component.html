@@ -145,10 +145,10 @@
   <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
     @for (post of posts; track post.id) {
       <li
-        class="p-4 border rounded shadow cursor-pointer"
+        class="p-4 border rounded shadow cursor-pointer bg-gray-100"
         [ngClass]="{'bg-yellow-100': post.isConcept && post.status === PostStatus.PENDING}"
-        (click)="navigateToComments(post.id)"
-      >
+        (click)="!isAdmin && navigateToComments(post.id)"
+        >
         <h3 class="text-lg font-bold mb-2">{{ post.title }}</h3>
         <p class="text-sm text-gray-600 mb-2">
           By {{ post.author }} on {{ post.createdDate | date: 'MMM d, yyyy, h:mm a' }}

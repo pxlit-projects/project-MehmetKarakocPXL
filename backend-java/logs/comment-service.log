@@ -4,3 +4,4 @@
 2024-12-27T14:54:32.858+0100 INFO               [main]                         be.pxl.services.CommentServiceApplication - No active profile set, falling back to 1 default profile: "default"
 2024-12-27T14:54:36.000+0100 INFO               [main]                         be.pxl.services.CommentServiceApplication - Started CommentServiceApplication in 3.759 seconds (process running for 4.19)
 2024-12-27T15:37:41.904+0100 INFO               [http-nio-8081-exec-10]        be.pxl.services.controller.CommentController - Comment added to post
+2024-12-27T18:59:28.914+0100 INFO               [http-nio-8081-exec-9]         be.pxl.services.controller.CommentController - Comment added to post

@@ -27,3 +27,4 @@
 2024-12-27T15:01:27.615+0100 INFO               [http-nio-8082-exec-10]        be.pxl.services.controller.PostController - Post added
 2024-12-27T16:00:00.511+0100 INFO               [http-nio-8082-exec-4]         be.pxl.services.controller.PostController - Post added
 2024-12-27T16:26:52.462+0100 INFO               [http-nio-8082-exec-10]        be.pxl.services.controller.PostController - Post added
+2024-12-27T18:52:25.898+0100 INFO               [http-nio-8082-exec-10]        be.pxl.services.controller.PostController - Post added
