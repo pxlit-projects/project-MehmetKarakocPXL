@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgIf, NgFor, NgClass } from '@angular/common'; // Add NgClass here
+import { NgIf, NgClass } from '@angular/common'; // Add NgClass here
 import { FormsModule } from '@angular/forms';
 import { PostService } from '../../services/post/post.service';
 import { ReviewService } from '../../services/review/review.service';
@@ -14,25 +14,32 @@ import { Router } from '@angular/router';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
   standalone: true,
-  imports: [NgIf, NgFor, NgClass, FormsModule, DatePipe], // Add NgClass to imports
+  imports: [NgIf, NgClass, FormsModule, DatePipe], // Add NgClass to imports
   providers: [DatePipe],
   
 })
 export class PostComponent implements OnInit {
   PostStatus = PostStatus; // Expose the enum to the template
   posts: Post[] = [];
-  review: Review[] = [];
+  reviews: Review[] = [];
   isAddPostModalOpen = false;
   isEditPostModalOpen = false;
-  currentView: string = 'allPosts'; 
+  currentView: string = 'publishedPosts'; // Default view
   filteredPosts: Post[] = [];
   loggedInAuthor: string = '';
   editablePost: Partial<Post> = {};
+  
   newPost: Partial<Post> = {
     title: '',
     content: '',
     isConcept: true,
     status: PostStatus.PENDING,
+  };
+
+  filters = {
+    author: '',
+    content: '',
+    date: '',
   };
 
   isRejectModalOpen: boolean = false;
@@ -44,13 +51,33 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPosts();
+    this.loadReviews(); 
     this.loggedInAuthor = this.authService.getUsername() ?? '';
+  }
+
+  loadReviews(): void {
+    this.reviewService.getReviews().subscribe((data) => {
+      this.reviews = data;
+    });
+  }
+
+  // Filter reviews for a specific post
+  getRejectionReason(postId: number): string | null {
+    const review = this.reviews.find(
+      (r) => r.postId === postId
+    );
+    return review ? review.content : null;
   }
 
   get isAdmin(): boolean {
     return this.authService.isAdmin();
   }
 
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
   openAddPostModal(): void {
     this.isAddPostModalOpen = true;
   }
@@ -80,31 +107,29 @@ export class PostComponent implements OnInit {
       status: PostStatus.PENDING
     };
   }
+
   loadPosts(): void {
-    this.postService.getPosts().subscribe((data) => {
+    const filters: any = {};
+  
+    if (this.currentView === 'publishedPosts') {
+      filters.status = 'APPROVED';
+    } else if (this.currentView === 'pendingPosts') {
+      filters.status = 'PENDING';
+    } else if (this.currentView === 'rejectedPosts') {
+      filters.status = 'REJECTED';
+    } else if (this.currentView === 'myPosts') {
+      filters.author = this.loggedInAuthor;
+    }
+  
+    // Call the filter endpoint with the constructed filters
+    this.postService.getFilteredPosts(filters).subscribe((data) => {
       this.posts = data;
-      this.filterPosts();
     });
   }
 
   setView(view: string): void {
     this.currentView = view;
-    this.filterPosts();
-  }
-
-  private filterPosts(): void {
-    if (this.currentView === 'allPosts') {
-      this.filteredPosts = this.posts; // Show all posts
-    } else if (this.currentView === 'myPosts') {
-      this.filteredPosts = this.posts.filter(
-        (post) => post.author === this.loggedInAuthor
-      ); // Show only the user's posts
-    } 
-    // else if (this.currentView === 'myConceptPosts') {
-    //   this.filteredPosts = this.posts.filter(
-    //     (post) => post.author === this.loggedInAuthor && post.isConcept
-    //   ); // Show only the user's concept posts
-    // }
+    this.loadPosts(); // Reload posts based on the selected view
   }
 
   addPost(): void {
@@ -139,9 +164,9 @@ export class PostComponent implements OnInit {
   addReview(post: Post | null, status: PostStatus, comment: string = '', event: Event): void {
     event.stopPropagation();
       if (!post) {
-    console.error('Cannot add review: post is null');
-    return;
-    }
+        console.error('Cannot add review: post is null');
+        return;
+      }
 
     const review: Partial<Review> = {
       postId: post.id,
@@ -153,49 +178,50 @@ export class PostComponent implements OnInit {
     this.reviewService.addReview(review).subscribe({
       next: () => {
         this.loadPosts(); // Reload posts after update
+        this.loadReviews(); // Reload reviews after update
         if (status === PostStatus.REJECTED) {
           this.closeRejectModal(); // Close reject modal on success
         }
       },
-      error: (err) => {
-        console.error(`Error updating status for post `, err);
-      },
     });
   }
   
-  filters = {
-    author: '',
-    content: '',
-    date: '',
-  };
 
   applyFilters(): void {
-    // Format date using DatePipe if a date is selected
+    // Format the date for backend compatibility
     const formattedDate = this.filters.date
-      ? this.datePipe.transform(this.filters.date, 'yyyy-MM-dd') // Match backend format
+      ? this.datePipe.transform(this.filters.date, 'yyyy-MM-dd')
       : null;
-      
-    const filters = {
-      ...this.filters,
-      date: formattedDate, // Replace raw date with formatted date
+  
+    // Prepare the filters object, including the current view
+    const filterParams: any = {
+      author: this.filters.author || null,
+      content: this.filters.content || null,
+      date: formattedDate,
+      status: this.currentView === 'publishedPosts' ? 'APPROVED' :
+              this.currentView === 'pendingPosts' ? 'PENDING' :
+              this.currentView === 'rejectedPosts' ? 'REJECTED' :
+              null
     };
 
-    this.postService.getFilteredPosts(filters).subscribe((data) => {
-      this.filteredPosts = data;
+    // Remove null values from the query parameters
+    const params = Object.fromEntries(Object.entries(filterParams).filter(([_, v]) => v != null));
+
+    this.postService.getFilteredPosts(params).subscribe((data) => {
+      this.posts = data; // Update filteredPosts with filtered data
     });
   }
 
-  // Reset filters
-  resetFilters() {
+  resetFilters(): void {
     this.filters = { author: '', content: '', date: '' };
-    this.filteredPosts = this.posts; // Reset to original posts
+    this.loadPosts();
   }
 
   openRejectModal(post: Post, event: Event ): void {
     event.stopPropagation();
     this.isRejectModalOpen = true;
     this.rejectPost = post;
-    this.rejectComment = ''; // Reset comment field
+    this.rejectComment = '';
   }
   
   closeRejectModal(): void {

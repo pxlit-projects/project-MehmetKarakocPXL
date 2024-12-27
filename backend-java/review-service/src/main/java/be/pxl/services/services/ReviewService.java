@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ReviewService implements IReviewService {
@@ -42,11 +44,18 @@ public class ReviewService implements IReviewService {
         rabbitTemplate.convertAndSend("myQueue", review);
     }
 
+    @Override
     public ReviewResponse getReviewByPostId(Long postId) {
         Review review = reviewRepository.findByPostId(postId);
         if (review == null) {
             return null;
         }
         return new ReviewResponse(review.getId(), review.getContent(), review.getPostId(), review.getAuthor(), review.isApproved());
+    }
+
+    @Override
+    public List<ReviewResponse> getReviews() {
+        List<Review> review = reviewRepository.findAll();
+        return review.stream().map(r -> new ReviewResponse(r.getId(), r.getContent(), r.getPostId(), r.getAuthor(), r.isApproved())).toList();
     }
 }

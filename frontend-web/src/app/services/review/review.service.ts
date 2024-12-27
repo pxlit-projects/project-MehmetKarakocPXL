@@ -7,12 +7,15 @@ import { Review } from '../../models/review.model';
   providedIn: 'root',
 })
 export class ReviewService {
-  private baseUrl = 'http://localhost:8083/api/review';
+  private baseUrl = 'http://127.0.0.1:8083/api/review';
 
   constructor(private http: HttpClient) {}
 
   addReview(review: Partial<Review>): Observable<void> {
-    console.log(review);
     return this.http.post<void>(this.baseUrl, review);
+  }
+
+  getReviews(): Observable<Review[]> {
+    return this.http.get<Review[]>(`${this.baseUrl}`);
   }
 }

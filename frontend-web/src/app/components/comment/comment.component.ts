@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgIf, NgFor, NgClass } from '@angular/common'; // Add NgClass here
+import { NgClass } from '@angular/common'; // Add NgClass here
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CommentService } from '../../services/comment/comment.service';
@@ -13,7 +13,7 @@ import { AuthService } from '../../services/AuthService';
   selector: 'app-comment',
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css'],
-  imports: [FormsModule, NgIf, NgFor, DatePipe],
+  imports: [FormsModule, DatePipe],
   standalone: true,
 })
 export class CommentComponent implements OnInit {

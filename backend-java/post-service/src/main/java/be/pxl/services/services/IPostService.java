@@ -6,23 +6,18 @@ import be.pxl.services.domain.Notification;
 import be.pxl.services.controller.request.PostRequest;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface IPostService {
 
     PostResponse getPostById(Long postId);
 
-    List<PostResponse> getAllPosts();
-
-    List<PostResponse> getAllPublishedPosts();
-
-    List<PostResponse> getAllToBeReviewedPosts();
-
     void addPost(PostRequest postRequest);
 
     void updatePost(Long postId, PostRequest postRequest);
 
-    List<PostResponse> getFilteredPosts(String content, String author, LocalDate date);
+    List<PostResponse> getFilteredPosts(String content, String author, LocalDate date, String status);
 
     String getAuthorByPostId(Long postId);
 

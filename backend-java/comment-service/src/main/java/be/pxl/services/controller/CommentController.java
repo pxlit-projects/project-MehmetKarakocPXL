@@ -1,7 +1,7 @@
 package be.pxl.services.controller;
 
 import be.pxl.services.controller.request.CommentRequest;
-import be.pxl.services.services.CommentService;
+import be.pxl.services.services.ICommentService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor(onConstructor_ = @Autowired)
 @CrossOrigin(origins = "http://localhost:4200")
 public class CommentController {
-    private final CommentService commentService;
+    private final ICommentService commentService;
     private static final Logger log = LoggerFactory.getLogger(CommentController.class);
 
     @GetMapping("/{postId}")

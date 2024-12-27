@@ -31,6 +31,7 @@ public class PostService implements IPostService {
             post.setStatus(PostStatus.APPROVED);
         } else {
             post.setStatus(PostStatus.REJECTED);
+            post.setIsConcept(true);
         }
         postRepository.save(post);
     }
@@ -39,24 +40,6 @@ public class PostService implements IPostService {
     public PostResponse getPostById(Long postId) {
         Post post = postRepository.findById(postId).orElseThrow(() -> new NotFoundException("No post with id [" + postId + "]"));
         return new PostResponse(post.getId(), post.getAuthor(), post.getTitle(), post.getContent(), post.getIsConcept(), post.getStatus(), post.getCreatedDate());
-    }
-
-    @Override
-    public List<PostResponse> getAllPosts() {
-        List<Post> posts = postRepository.findAll();
-        return getPostResponses(posts);
-    }
-
-    @Override
-    public List<PostResponse> getAllPublishedPosts() {
-        List<Post> posts = postRepository.findByStatus(PostStatus.APPROVED);
-        return getPostResponses(posts);
-    }
-
-    @Override
-    public List<PostResponse> getAllToBeReviewedPosts() {
-        List<Post> posts = postRepository.findByStatusIn(List.of(PostStatus.PENDING, PostStatus.REJECTED));
-        return getPostResponses(posts);
     }
 
     @Override
@@ -77,13 +60,14 @@ public class PostService implements IPostService {
         post.setTitle(postRequest.title());
         post.setContent(postRequest.content());
         post.setIsConcept(postRequest.isConcept());
-        post.setStatus(postRequest.status());
+        post.setStatus(PostStatus.PENDING);
         postRepository.save(post);
     }
 
     @Override
-    public List<PostResponse> getFilteredPosts(String content, String author, LocalDate date) {
-        List<Post> posts = postRepository.findByFilters(content, author, date);
+    public List<PostResponse> getFilteredPosts(String content, String author, LocalDate date, String status) {
+        PostStatus postStatus = (status != null) ? PostStatus.valueOf(status.toUpperCase()) : null;
+        List<Post> posts = postRepository.findByFilters(content, author, date, postStatus);
         return getPostResponses(posts);
     }
 

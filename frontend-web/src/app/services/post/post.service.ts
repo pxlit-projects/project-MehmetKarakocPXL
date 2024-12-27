@@ -2,25 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post.model';
+import { Notification } from '../../models/notification.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
-  private baseUrl = 'http://localhost:8082/api/post'; // Replace with your backend URL
+  private baseUrl = 'http://127.0.0.1:8082/api/post'; 
 
   constructor(private http: HttpClient) {}
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseUrl);
-  }
-
-  getAllPublishedPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseUrl);
-  }
-  
-  getAllToBeReviewedPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseUrl);
+  getAllPostsByAuthor(author:string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}/author/${author}`);
   }
 
   addPost(post: Partial<Post>): Observable<void> {
@@ -39,13 +32,11 @@ export class PostService {
     return this.http.get<Post[]>(`${this.baseUrl}/sort?sortBy=${sortBy}`);
   }
   
-  // Fetch posts with filters
-  getFilteredPosts(filters: { author: string; content: string; date: string | null}): Observable<any[]> {
-    let params = new HttpParams();
-    if (filters.author) params = params.set('author', filters.author);
-    if (filters.content) params = params.set('content', filters.content);
-    if (filters.date) params = params.set('date', filters.date);
+  getFilteredPosts(filters: any): Observable<any[]> {
+    return this.http.get<Post[]>(`${this.baseUrl}/filtered`, { params: filters });
+  }
 
-    return this.http.get<any[]>(`${this.baseUrl}/filter`, { params });
+  getNotificationsByAuthor(author: string): Observable<any[]> {
+    return this.http.get<Notification[]>(`${this.baseUrl}/notifications/${author}`);
   }
 }

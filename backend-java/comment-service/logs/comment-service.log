@@ -1,0 +1,156 @@
+2024-12-26T22:54:55.957+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 27683 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T22:54:55.958+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T22:54:55.958+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T22:54:58.784+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.409 seconds (process running for 16.025)
+2024-12-26T22:56:23.617+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 27778 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T22:56:23.618+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T22:56:23.618+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T22:56:26.431+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.395 seconds (process running for 16.323)
+2024-12-26T22:56:26.833+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:00:12.917+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 27933 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:00:12.919+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:00:12.920+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:00:16.605+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 4.347 seconds (process running for 18.12)
+2024-12-26T23:02:43.104+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28042 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:02:43.105+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:02:43.106+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:02:45.810+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.257 seconds (process running for 16.041)
+2024-12-26T23:05:45.058+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28163 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:05:45.058+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:05:45.059+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:05:47.734+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.199 seconds (process running for 16.106)
+2024-12-26T23:09:18.466+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28321 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:09:18.466+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:09:18.467+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:09:21.766+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.812 seconds (process running for 17.053)
+2024-12-26T23:09:22.747+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:10:28.729+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28371 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:10:28.730+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:10:28.730+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:10:32.030+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.927 seconds (process running for 16.274)
+2024-12-26T23:11:22.375+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28412 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:11:22.376+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:11:22.376+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:11:25.959+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 4.131 seconds (process running for 16.38)
+2024-12-26T23:14:07.253+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28545 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:14:07.253+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:14:07.254+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:14:10.218+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.726 seconds (process running for 16.602)
+2024-12-26T23:14:55.757+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28598 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:14:55.758+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:14:55.758+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:14:58.532+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.322 seconds (process running for 15.5)
+2024-12-26T23:15:47.847+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28640 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:15:47.848+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:15:47.849+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:15:51.139+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.866 seconds (process running for 16.117)
+2024-12-26T23:16:53.611+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28696 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:16:53.611+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:16:53.612+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:16:56.382+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.348 seconds (process running for 16.448)
+2024-12-26T23:19:55.836+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28813 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:19:55.836+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:19:55.837+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:19:58.498+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.196 seconds (process running for 15.516)
+2024-12-26T23:20:25.939+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28844 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:20:25.940+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:20:25.940+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:20:28.651+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.263 seconds (process running for 15.847)
+2024-12-26T23:21:15.834+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28878 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:21:15.835+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:21:15.836+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:21:18.767+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.49 seconds (process running for 16.379)
+2024-12-26T23:21:19.505+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:21:51.259+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28904 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:21:51.260+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:21:51.260+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:21:54.089+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.41 seconds (process running for 17.276)
+2024-12-26T23:22:19.471+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28927 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:22:19.471+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:22:19.472+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:22:22.336+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.473 seconds (process running for 17.288)
+2024-12-26T23:22:22.994+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:23:18.676+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 28988 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:23:18.676+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:23:18.677+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:23:21.645+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.575 seconds (process running for 17.524)
+2024-12-26T23:23:41.518+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29021 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:23:41.519+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:23:41.520+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:23:44.352+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.412 seconds (process running for 15.679)
+2024-12-26T23:23:45.070+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:24:37.099+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29106 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:24:37.101+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:24:37.102+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:24:41.590+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 6.705 seconds (process running for 20.215)
+2024-12-26T23:24:59.700+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29194 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:24:59.701+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:24:59.701+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:25:02.491+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.411 seconds (process running for 15.821)
+2024-12-26T23:25:03.172+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:26:13.347+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29262 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:26:13.348+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:26:13.348+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:26:16.131+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.435 seconds (process running for 15.78)
+2024-12-26T23:26:54.172+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29296 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:26:54.173+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:26:54.173+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:26:56.934+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.305 seconds (process running for 16.432)
+2024-12-26T23:26:57.598+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:28:50.428+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29374 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:28:50.429+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:28:50.429+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:28:53.204+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.334 seconds (process running for 16.186)
+2024-12-26T23:28:53.875+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:32:19.072+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29497 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:32:19.073+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:32:19.074+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:32:21.884+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.391 seconds (process running for 15.769)
+2024-12-26T23:33:39.910+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29553 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:33:39.910+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:33:39.911+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:33:42.622+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.253 seconds (process running for 15.713)
+2024-12-26T23:34:54.344+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29613 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:34:54.345+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:34:54.345+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:34:57.011+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.184 seconds (process running for 16.172)
+2024-12-26T23:35:31.499+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29643 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:35:31.500+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:35:31.500+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:35:36.771+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 5.83 seconds (process running for 18.258)
+2024-12-26T23:35:37.492+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:36:22.730+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29692 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:36:22.730+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:36:22.731+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:36:25.503+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.343 seconds (process running for 15.925)
+2024-12-26T23:36:26.170+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:37:45.776+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29747 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:37:45.776+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:37:45.777+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:37:51.142+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 5.936 seconds (process running for 19.117)
+2024-12-26T23:37:51.922+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:38:34.481+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29790 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:38:34.482+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:38:34.483+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:38:37.202+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.268 seconds (process running for 16.745)
+2024-12-26T23:38:37.825+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:39:47.110+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29850 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:39:47.111+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:39:47.111+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:39:49.780+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.196 seconds (process running for 16.122)
+2024-12-26T23:39:50.374+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:40:12.449+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29885 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:40:12.450+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:40:12.450+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:40:15.348+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.473 seconds (process running for 15.646)
+2024-12-26T23:40:16.014+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:40:34.940+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29905 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:40:34.941+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:40:34.941+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:40:37.722+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.331 seconds (process running for 16.568)
+2024-12-26T23:40:38.418+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post
+2024-12-26T23:41:26.557+0100 INFO               [main]                         be.pxl.services.CommentTests  - Starting CommentTests using Java 22.0.1 with PID 29946 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service)
+2024-12-26T23:41:26.558+0100 DEBUG              [main]                         be.pxl.services.CommentTests  - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:41:26.558+0100 INFO               [main]                         be.pxl.services.CommentTests  - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:41:29.425+0100 INFO               [main]                         be.pxl.services.CommentTests  - Started CommentTests in 3.421 seconds (process running for 16.569)
+2024-12-26T23:41:30.126+0100 INFO               [main]                         be.pxl.services.controller.CommentController - Comment added to post

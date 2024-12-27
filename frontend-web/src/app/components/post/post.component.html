@@ -1,70 +1,77 @@
 <div class="container mx-auto p-4">
-  <h2 class="text-xl font-semibold mb-4">Posts</h2>
-
   <!-- Tabs for filtering posts -->
   <div class="flex justify-center space-x-10 mb-6">
     <button
-      (click)="setView('allPosts')"
-      [class.text-blue-500]="currentView === 'allPosts'"
+      (click)="setView('publishedPosts')"
+      [class.text-blue-500]="currentView === 'publishedPosts'"
       class="text-lg font-semibold hover:text-blue-500"
     >
-       All Posts
+      All Published Posts
     </button>
+    @if (isAdmin) {
+      <button
+        (click)="setView('rejectedPosts')"
+        [class.text-blue-500]="currentView === 'rejectedPosts'"
+        class="text-lg font-semibold hover:text-blue-500"
+      >
+        All Rejected Posts
+      </button>
+      <button
+        (click)="setView('pendingPosts')"
+        [class.text-blue-500]="currentView === 'pendingPosts'"
+        class="text-lg font-semibold hover:text-blue-500"
+      >
+        All Pending Posts
+      </button>
+    }
     <button
       (click)="setView('myPosts')"
       [class.text-blue-500]="currentView === 'myPosts'"
       class="text-lg font-semibold hover:text-blue-500"
     >
-      Your Posts
+      My Posts
     </button>
-    <!-- <button
-      (click)="setView('myConceptPosts')"
-      [class.text-blue-500]="currentView === 'myConceptPosts'"
-      class="text-lg font-semibold hover:text-blue-500"
-    >
-      Your Concept Posts
-    </button> -->
-
+    @if (isAdmin) {
+      <button
+        (click)="openAddPostModal()"
+        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      >
+        Add Post
+      </button>
+    }
     <button
-      (click)="openAddPostModal()"
-      *ngIf="isAdmin"
-      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      (click)="logout()"
+      class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
     >
-      Add Post
+      Logout
     </button>
-    </div>
+  </div>
 
-  <!-- Button to open the modal -->
   <!-- Filtering Section -->
-  <div class="flex flex-col sm:flex-row gap-4 mb-6 justify-center" *ngIf="currentView === 'allPosts'">
-    <!-- Author Filter -->
+  <div class="flex flex-col sm:flex-row gap-4 mb-6 justify-center">
     <input
       type="text"
       placeholder="Filter by author"
       [(ngModel)]="filters.author"
       class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
-    <!-- Content Filter -->
     <input
       type="text"
       placeholder="Filter by content"
       [(ngModel)]="filters.content"
       class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
-    <!-- Date Filter -->
     <input
       type="date"
       [(ngModel)]="filters.date"
       class="border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
     />
-    <!-- Apply Filters Button -->
     <button
       (click)="applyFilters()"
       class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
     >
       Apply Filters
     </button>
-    <!-- Reset Filters Button -->
     <button
       (click)="resetFilters()"
       class="bg-gray-300 text-black px-4 py-2 rounded-lg hover:bg-gray-400"
@@ -74,74 +81,73 @@
   </div>
 
   <!-- Modal -->
-  <div
-    *ngIf="isAddPostModalOpen"
-    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-  >
-    <div class="bg-white p-6 rounded-lg w-96">
-      <h3 class="text-lg font-bold mb-4">Add a New Post</h3>
-      <form (ngSubmit)="addPost()">
-        <div class="mb-4">
-          <label for="title" class="block text-sm font-medium mb-1">Title</label>
-          <input
-            type="text"
-            id="title"
-            [(ngModel)]="newPost.title"
-            name="title"
-            required
-            placeholder="Enter post title"
-            class="w-full p-2 border rounded"
-          />
-        </div>
-        <div class="mb-4">
-          <label for="content" class="block text-sm font-medium mb-1">Content</label>
-          <textarea
-            id="content"
-            [(ngModel)]="newPost.content"
-            name="content"
-            required
-            placeholder="Enter post content"
-            class="w-full p-2 border rounded"
-            rows="4"
-          ></textarea>
-        </div>
-        <div class="flex items-center space-x-4 mb-4">
-          <label class="flex items-center space-x-2">
+  @if (isAddPostModalOpen) {
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div class="bg-white p-6 rounded-lg w-96">
+        <h3 class="text-lg font-bold mb-4">Add a New Post</h3>
+        <form (ngSubmit)="addPost()">
+          <div class="mb-4">
+            <label for="title" class="block text-sm font-medium mb-1">Title</label>
             <input
-              type="checkbox"
-              [(ngModel)]="newPost.isConcept"
-              name="isConcept"
-              class="h-4 w-4"
+              type="text"
+              id="title"
+              [(ngModel)]="newPost.title"
+              name="title"
+              required
+              placeholder="Enter post title"
+              class="w-full p-2 border rounded"
             />
-            <span class="text-sm">Mark as Concept</span>
-          </label>
-        </div>
-        <div class="flex justify-end space-x-4">
-          <button
-            type="button"
-            (click)="closeAddPostModal()"
-            class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Add Post
-          </button>
-        </div>
-      </form>
+          </div>
+          <div class="mb-4">
+            <label for="content" class="block text-sm font-medium mb-1">Content</label>
+            <textarea
+              id="content"
+              [(ngModel)]="newPost.content"
+              name="content"
+              required
+              placeholder="Enter post content"
+              class="w-full p-2 border rounded"
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="flex items-center space-x-4 mb-4">
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                [(ngModel)]="newPost.isConcept"
+                name="isConcept"
+                class="h-4 w-4"
+              />
+              <span class="text-sm">Mark as Concept</span>
+            </label>
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button
+              type="button"
+              (click)="closeAddPostModal()"
+              class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Add Post
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-
-
+  }
 
   <!-- Posts Grid -->
   <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-    @for (post of filteredPosts; track post.id) {
-      <li class="p-4 border rounded shadow cursor-pointer"
-      (click)="navigateToComments(post.id)"
+    @for (post of posts; track post.id) {
+      <li
+        class="p-4 border rounded shadow cursor-pointer"
+        [ngClass]="{'bg-yellow-100': post.isConcept && post.status === PostStatus.PENDING}"
+        (click)="navigateToComments(post.id)"
       >
         <h3 class="text-lg font-bold mb-2">{{ post.title }}</h3>
         <p class="text-sm text-gray-600 mb-2">
@@ -149,7 +155,6 @@
         </p>
         <p class="mb-4">{{ post.content }}</p>
         <div class="flex items-center space-x-4">
-          <!-- Approval Buttons -->
           <span
             class="px-2 py-1 rounded text-sm"
             [ngClass]="{
@@ -159,34 +164,33 @@
             }"
           >
             {{ post.status === PostStatus.APPROVED
-                ? 'Approved' 
-                : (post.status === PostStatus.REJECTED
-                    ? 'Rejected' 
-                    : 'Pending Review') }}
+              ? 'Approved'
+              : post.status === PostStatus.REJECTED
+              ? 'Rejected: ' + getRejectionReason(post.id)
+              : 'Pending Review' }}
           </span>
-          <button
-            *ngIf="post.status === PostStatus.PENDING && isAdmin"
-            (click)="addReview(post, PostStatus.APPROVED,'', $event)"
-            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-          >
-            Approve
-          </button>
-          <button
-            *ngIf="post.status === PostStatus.PENDING && isAdmin"
-            (click)="openRejectModal(post, $event)"
-            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-          >
-            Reject
-          </button>
-
-          <!-- Edit Button for Own Posts -->
-          <button
-            *ngIf="post.author === loggedInAuthor && isAdmin && post.isConcept"
-            (click)="openEditPostModal(post, $event)"
-            class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600"
-          >
-            Edit
-          </button>
+          @if (post.status === PostStatus.PENDING && isAdmin && !post.isConcept) {
+            <button
+              (click)="addReview(post, PostStatus.APPROVED, '', $event)"
+              class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              Approve
+            </button>
+            <button
+              (click)="openRejectModal(post, $event)"
+              class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
+              Reject
+            </button>
+          }
+          @if (post.author === loggedInAuthor && isAdmin && post.isConcept && post.status !== PostStatus.APPROVED) {
+            <button
+              (click)="openEditPostModal(post, $event)"
+              class="bg-yellow-500 text-white px-4 py-1 rounded hover:bg-yellow-600"
+            >
+              Edit
+            </button>
+          }
         </div>
       </li>
     } @empty {
@@ -197,94 +201,92 @@
   </ul>
 
   <!-- Edit Modal -->
-  <div
-    *ngIf="isEditPostModalOpen"
-    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
-  >
-    <div class="bg-white p-6 rounded-lg w-96">
-      <h3 class="text-lg font-bold mb-4">Edit Post</h3>
-      <form (ngSubmit)="editPost()">
-        <div class="mb-4">
-          <label for="title" class="block text-sm font-medium mb-1">Title</label>
-          <input
-            type="text"
-            id="title"
-            [(ngModel)]="editablePost.title"
-            name="title"
-            required
-            class="w-full p-2 border rounded"
-          />
-        </div>
-        <div class="mb-4">
-          <label for="content" class="block text-sm font-medium mb-1">Content</label>
-          <textarea
-            id="content"
-            [(ngModel)]="editablePost.content"
-            name="content"
-            required
-            class="w-full p-2 border rounded"
-            rows="4"
-          ></textarea>
-        </div>
-        <div class="flex items-center space-x-4 mb-4">
-          <label class="flex items-center space-x-2">
+  @if (isEditPostModalOpen) {
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div class="bg-white p-6 rounded-lg w-96">
+        <h3 class="text-lg font-bold mb-4">Edit Post</h3>
+        <form (ngSubmit)="editPost()">
+          <div class="mb-4">
+            <label for="title" class="block text-sm font-medium mb-1">Title</label>
             <input
-              type="checkbox"
-              [(ngModel)]="editablePost.isConcept"
-              name="isConcept"
-              class="h-4 w-4"
+              type="text"
+              id="title"
+              [(ngModel)]="editablePost.title"
+              name="title"
+              required
+              class="w-full p-2 border rounded"
             />
-            <span class="text-sm">Mark as Concept</span>
-          </label>
-        </div>
-        <div class="flex justify-end space-x-4">
+          </div>
+          <div class="mb-4">
+            <label for="content" class="block text-sm font-medium mb-1">Content</label>
+            <textarea
+              id="content"
+              [(ngModel)]="editablePost.content"
+              name="content"
+              required
+              class="w-full p-2 border rounded"
+              rows="4"
+            ></textarea>
+          </div>
+          <div class="flex items-center space-x-4 mb-4">
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                [(ngModel)]="editablePost.isConcept"
+                name="isConcept"
+                class="h-4 w-4"
+              />
+              <span class="text-sm">Mark as Concept</span>
+            </label>
+          </div>
+          <div class="flex justify-end space-x-4">
+            <button
+              type="button"
+              (click)="closeEditPostModal()"
+              class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+
+  <!-- Reject Modal -->
+  @if (isRejectModalOpen) {
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+      <div class="bg-white p-6 rounded-lg w-96">
+        <h3 class="text-lg font-bold mb-4">Reject Post</h3>
+        <p class="mb-4">Please provide comments for rejection:</p>
+        <textarea
+          [(ngModel)]="rejectComment"
+          name="rejectComment"
+          rows="4"
+          class="w-full p-2 border rounded"
+          placeholder="Enter rejection comments"
+        ></textarea>
+        <div class="flex justify-end space-x-4 mt-4">
           <button
-            type="button"
-            (click)="closeEditPostModal()"
+            (click)="closeRejectModal()"
             class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
           >
             Cancel
           </button>
           <button
-            type="submit"
-            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            (click)="addReview(rejectPost!, PostStatus.REJECTED, rejectComment, $event)"
+            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
           >
-            Save Changes
+            Reject
           </button>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
-
-  <div
-  *ngIf="isRejectModalOpen"
-  class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
->
-  <div class="bg-white p-6 rounded-lg w-96">
-    <h3 class="text-lg font-bold mb-4">Reject Post</h3>
-    <p class="mb-4">Please provide comments for rejection:</p>
-    <textarea
-      [(ngModel)]="rejectComment"
-      name="rejectComment"
-      rows="4"
-      class="w-full p-2 border rounded"
-      placeholder="Enter rejection comments"
-    ></textarea>
-    <div class="flex justify-end space-x-4 mt-4">
-      <button
-        (click)="closeRejectModal()"
-        class="bg-gray-300 text-black px-4 py-2 rounded hover:bg-gray-400"
-      >
-        Cancel
-      </button>
-      <button
-        (click)="addReview(rejectPost!, PostStatus.REJECTED, rejectComment, $event)"
-        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-      >
-        Reject
-      </button>
-    </div>
-  </div>
-</div>
-
+  }
 </div>

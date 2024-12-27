@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -24,22 +25,6 @@ public class PostController {
 
     private IPostService postService;
     private static final Logger log = LoggerFactory.getLogger(PostController.class);
-
-
-    @GetMapping
-    public ResponseEntity<List<PostResponse>> getAllPosts(){
-        return ResponseEntity.ok(postService.getAllPosts());
-    }
-
-    @GetMapping("/published")
-    public ResponseEntity<List<PostResponse>> getAllPublishedPosts(){
-        return ResponseEntity.ok(postService.getAllPublishedPosts());
-    }
-
-    @GetMapping("/to-be-reviewed")
-    public ResponseEntity<List<PostResponse>> getAllToBeReviewedPosts(){
-        return ResponseEntity.ok(postService.getAllToBeReviewedPosts());
-    }
 
     @GetMapping("/{postId}")
     public ResponseEntity<PostResponse> getPostById(@PathVariable Long postId){
@@ -53,18 +38,19 @@ public class PostController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    //update alles
     @PatchMapping("/{postId}")
     public ResponseEntity<Void> updatePost(@PathVariable Long postId, @RequestBody PostRequest postRequest){
         postService.updatePost(postId, postRequest);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/filter")
+    @GetMapping("/filtered")
     public ResponseEntity<List<PostResponse>> getFilteredPosts(@RequestParam(required = false) String content,
                                                                @RequestParam(required = false) String author,
-                                                               @RequestParam(required = false) LocalDate date) {
-        return ResponseEntity.ok(postService.getFilteredPosts(content, author, date));
+                                                               @RequestParam(required = false) LocalDate date,
+                                                               @RequestParam(required = false) String status
+    ) {
+        return ResponseEntity.ok(postService.getFilteredPosts(content, author, date, status));
     }
 
     @GetMapping("/author/{postId}")
@@ -75,7 +61,7 @@ public class PostController {
     @PostMapping("/notification")
     public ResponseEntity<Void> receiveNotification(@RequestBody NotificationRequest notificationRequest) {
         postService.saveNotification(notificationRequest);
-        return ResponseEntity.ok().build();
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/notification/{author}")
