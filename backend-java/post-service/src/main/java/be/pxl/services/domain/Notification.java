@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @Table(name="notifications")
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
 public class Notification {
 
     @Id
@@ -27,4 +25,16 @@ public class Notification {
     @CreationTimestamp
     @Column(name = "created_date", updatable = false)
     private LocalDateTime createdDate;
+
+    public Notification() {
+
+    }
+
+    public Notification(Long id, String message, String author, String receiver, LocalDateTime createdDate) {
+        this.id = id;
+        this.message = message;
+        this.author = author;
+        this.receiver = receiver;
+        this.createdDate = createdDate;
+    }
 }

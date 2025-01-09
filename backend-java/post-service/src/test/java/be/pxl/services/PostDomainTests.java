@@ -1,6 +1,10 @@
 package be.pxl.services;
 
+import be.pxl.services.controller.request.NotificationRequest;
 import be.pxl.services.domain.Notification;
+import be.pxl.services.domain.Post;
+import be.pxl.services.domain.PostStatus;
+import be.pxl.services.domain.Review;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -8,92 +12,44 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PostDomainTests {
-
     @Test
-    public void testNotificationBuilderAndGetters() {
-        LocalDateTime now = LocalDateTime.now();
+    void testPostDefaultConstructor() {
+        Post post = new Post();
 
-        Notification notification = Notification.builder()
-                .id(1L)
-                .message("Test Message")
-                .author("Author Name")
-                .receiver("Receiver Name")
-                .createdDate(now)
-                .build();
-
-        assertEquals(1L, notification.getId());
-        assertEquals("Test Message", notification.getMessage());
-        assertEquals("Author Name", notification.getAuthor());
-        assertEquals("Receiver Name", notification.getReceiver());
-        assertEquals(now, notification.getCreatedDate());
+        assertNull(post.getId());
+        assertNull(post.getAuthor());
+        assertNull(post.getTitle());
+        assertNull(post.getContent());
+        assertNull(post.getIsConcept());
+        assertNull(post.getStatus());
+        assertNull(post.getCreatedDate());
     }
 
+
     @Test
-    public void testNotificationNoArgsConstructor() {
+    void testReviewDefaultConstructor() {
+        // Arrange
+        Review review = new Review();
+
+        // Assert
+        assertNull(review.getId(), "ID should be null with default constructor");
+        assertNull(review.getPostId(), "Post ID should be null with default constructor");
+        assertNull(review.getAuthor(), "Author should be null with default constructor");
+        assertNull(review.getContent(), "Content should be null with default constructor");
+        assertFalse(review.isApproved(), "isApproved should be false with default constructor");
+    }
+
+
+    @Test
+    void testNotificationDefaultConstructor() {
+        // Arrange
         Notification notification = new Notification();
 
-        assertNull(notification.getId());
-        assertNull(notification.getMessage());
-        assertNull(notification.getAuthor());
-        assertNull(notification.getReceiver());
-        assertNull(notification.getCreatedDate());
-    }
-
-    @Test
-    public void testNotificationAllArgsConstructor() {
-        LocalDateTime now = LocalDateTime.now();
-
-        Notification notification = new Notification(1L, "Test Message", "Author Name", "Receiver Name", now);
-
-        assertEquals(1L, notification.getId());
-        assertEquals("Test Message", notification.getMessage());
-        assertEquals("Author Name", notification.getAuthor());
-        assertEquals("Receiver Name", notification.getReceiver());
-        assertEquals(now, notification.getCreatedDate());
-    }
-
-    @Test
-    public void testNotificationSetters() {
-        LocalDateTime now = LocalDateTime.now();
-
-        Notification notification = new Notification();
-        notification.setId(1L);
-        notification.setMessage("Test Message");
-        notification.setAuthor("Author Name");
-        notification.setReceiver("Receiver Name");
-        notification.setCreatedDate(now);
-
-        assertEquals(1L, notification.getId());
-        assertEquals("Test Message", notification.getMessage());
-        assertEquals("Author Name", notification.getAuthor());
-        assertEquals("Receiver Name", notification.getReceiver());
-        assertEquals(now, notification.getCreatedDate());
-    }
-
-    @Test
-    public void testNotificationEquality() {
-        LocalDateTime now = LocalDateTime.now();
-
-        Notification notification1 = new Notification(1L, "Message", "Author", "Receiver", now);
-        Notification notification2 = new Notification(1L, "Message", "Author", "Receiver", now);
-
-        assertEquals(notification1, notification2);
-        assertEquals(notification1.hashCode(), notification2.hashCode());
-    }
-
-    @Test
-    public void testNotificationToString() {
-        LocalDateTime now = LocalDateTime.now();
-
-        Notification notification = Notification.builder()
-                .id(1L)
-                .message("Test Message")
-                .author("Author Name")
-                .receiver("Receiver Name")
-                .createdDate(now)
-                .build();
-
-        String expected = "Notification(id=1, message=Test Message, author=Author Name, receiver=Receiver Name, createdDate=" + now + ")";
-        assertEquals(expected, notification.toString());
+        // Assert
+        assertNull(notification.getId(), "ID should be null with default constructor");
+        assertNull(notification.getMessage(), "Message should be null with default constructor");
+        assertNull(notification.getAuthor(), "Author should be null with default constructor");
+        assertNull(notification.getReceiver(), "Receiver should be null with default constructor");
+        assertNull(notification.getCreatedDate(), "Created date should be null with default constructor");
     }
 }

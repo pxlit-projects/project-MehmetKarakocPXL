@@ -197,9 +197,9 @@ public class PostServiceTests {
                 .build();
 
         Notification notification = Notification.builder()
-                .author(notificationRequest.getAuthor())
-                .message(notificationRequest.getMessage())
-                .receiver(notificationRequest.getReceiver())
+                .author(notificationRequest.author())
+                .message(notificationRequest.message())
+                .receiver(notificationRequest.receiver())
                 .build();
 
         when(notificationRepository.save(any(Notification.class))).thenReturn(notification);

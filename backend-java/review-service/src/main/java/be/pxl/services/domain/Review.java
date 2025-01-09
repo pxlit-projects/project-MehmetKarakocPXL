@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @Table(name="reviews")
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,4 +21,16 @@ public class Review {
     private String author;
     private String content;
     private boolean isApproved;
+
+    public Review(Long id, Long postId, String author, String content, boolean isApproved) {
+        this.id = id;
+        this.postId = postId;
+        this.author = author;
+        this.content = content;
+        this.isApproved = isApproved;
+    }
+
+    public Review() {
+
+    }
 }

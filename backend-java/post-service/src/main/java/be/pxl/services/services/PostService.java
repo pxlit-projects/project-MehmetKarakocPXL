@@ -89,9 +89,9 @@ public class PostService implements IPostService {
     @Override
     public void saveNotification(NotificationRequest notificationRequest) {
         Notification notification = new Notification();
-        notification.setAuthor(notificationRequest.getAuthor());
-        notification.setMessage(notificationRequest.getMessage());
-        notification.setReceiver(notificationRequest.getReceiver());
+        notification.setAuthor(notificationRequest.author());
+        notification.setMessage(notificationRequest.message());
+        notification.setReceiver(notificationRequest.receiver());
         notificationRepository.save(notification);
     }
 

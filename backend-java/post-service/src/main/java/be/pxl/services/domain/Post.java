@@ -14,8 +14,6 @@ import java.time.LocalDateTime;
 @Table(name="posts")
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,4 +29,18 @@ public class Post {
     @CreationTimestamp
     @Column(name = "created_date", updatable = false)
     private LocalDateTime createdDate;
+
+    public Post() {
+
+    }
+
+    public Post(Long id, String author, String title, String content, Boolean isConcept, PostStatus status, LocalDateTime createdDate) {
+        this.id = id;
+        this.author = author;
+        this.title = title;
+        this.content = content;
+        this.isConcept = isConcept;
+        this.status = status;
+        this.createdDate = createdDate;
+    }
 }

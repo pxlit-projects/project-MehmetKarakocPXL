@@ -5,12 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class NotificationRequest {
-    private String message;
-    private String author;
-    private String receiver;
+public record NotificationRequest(String message, String author, String receiver) {
 }

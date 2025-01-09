@@ -133,6 +133,31 @@ public class PostControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("Post Title"));
     }
+    @Test
+    public void testUpdatePost_withValidRole_shouldReturn() throws Exception {
+        Post post = Post.builder()
+                .title("Original Title")
+                .content("Original Content")
+                .author("Author")
+                .status(PostStatus.PENDING)
+                .isConcept(false)
+                .build();
+        postRepository.save(post);
+
+        PostRequest updatedPostRequest = PostRequest.builder()
+                .title("Updated Title")
+                .content("Updated Content")
+                .isConcept(false)
+                .build();
+
+        String updatedPostString = objectMapper.writeValueAsString(updatedPostRequest);
+
+        mockMvc.perform(MockMvcRequestBuilders.patch("/api/post/" + post.getId())
+                        .header("Role", "admin")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(updatedPostString))
+                .andExpect(status().isOk());
+    }
 
     @Test
     public void testUpdatePost_withUserRole_shouldReturnForbidden() throws Exception {

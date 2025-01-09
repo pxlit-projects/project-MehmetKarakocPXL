@@ -13,8 +13,6 @@ import java.time.LocalDateTime;
 @Table(name="comments")
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,4 +25,16 @@ public class Comment {
     @CreationTimestamp
     @Column(name = "created_date", updatable = false)
     private LocalDateTime createdDate;
+
+    public Comment() {
+
+    }
+
+    public Comment(Long id, Long postId, String author, String content, LocalDateTime createdDate) {
+        this.id = id;
+        this.postId = postId;
+        this.author = author;
+        this.content = content;
+        this.createdDate = createdDate;
+    }
 }
