@@ -38,7 +38,7 @@ public class ReviewService implements IReviewService {
         notificationRequest.setAuthor(review.getAuthor());
         notificationRequest.setReceiver(authorPost);
         notificationRequest.setMessage(
-                review.isApproved() ? "Your review has been approved" : "Your review has been rejected"
+                review.isApproved() ? "Your post with id: " + review.getPostId() +" has been approved" : "Your post with id: " + review.getPostId() + " has been rejected"
         );
         notificationClient.sendNotification(notificationRequest);
         rabbitTemplate.convertAndSend("myQueue", review);

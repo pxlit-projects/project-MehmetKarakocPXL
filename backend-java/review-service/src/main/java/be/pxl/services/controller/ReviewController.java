@@ -16,20 +16,25 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/review")
 @AllArgsConstructor(onConstructor_ = @Autowired)
-@CrossOrigin(origins = "http://localhost:4200")
 public class ReviewController {
     private final IReviewService reviewService;
     private static final Logger log = LoggerFactory.getLogger(ReviewController.class);
 
     @PostMapping
-    public ResponseEntity<Void> addReview(@RequestBody ReviewRequest reviewRequest) {
+    public ResponseEntity<Void> addReview(@RequestBody ReviewRequest reviewRequest, @RequestHeader("Role") String role) {
+        if (!role.equalsIgnoreCase("admin")) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN); // Unauthorized role
+        }
         reviewService.addReview(reviewRequest);
         log.info("Review added for post ID: {}", reviewRequest.postId());
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<ReviewResponse>> getReviews(){
+    public ResponseEntity<List<ReviewResponse>> getReviews(@RequestHeader("Role") String role){
+        if (!role.equalsIgnoreCase("admin")  && !role.equalsIgnoreCase("user")) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN); // Unauthorized role
+        }
         return new ResponseEntity<>(reviewService.getReviews(), HttpStatus.OK);
     }
 

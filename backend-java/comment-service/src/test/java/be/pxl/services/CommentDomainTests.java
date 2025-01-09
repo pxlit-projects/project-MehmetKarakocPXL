@@ -1,10 +1,11 @@
 package be.pxl.services;
 
+import be.pxl.services.controller.request.CommentRequest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CommmentDomainTests {
+public class CommentDomainTests {
 
     @Test
     public void testCommentRequestBuilderAndGetters() {

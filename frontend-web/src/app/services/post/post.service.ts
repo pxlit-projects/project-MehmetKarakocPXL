@@ -1,42 +1,59 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Post } from '../../models/post.model';
 import { Notification } from '../../models/notification.model';
+import { AuthService } from '../../services/AuthService';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class PostService {
-  private baseUrl = 'http://127.0.0.1:8082/api/post'; 
+  private baseUrl = 'http://127.0.0.1:8084/post/api/post'; 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
+  private getHeaders(): HttpHeaders {
+    const role = this.authService.getRole() || '';
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Role': role,
+    });
+  }
   getAllPostsByAuthor(author:string): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}/author/${author}`);
+    const headers = this.getHeaders();
+    return this.http.get<Post[]>(`${this.baseUrl}/author/${author}`, {headers});
   }
 
   addPost(post: Partial<Post>): Observable<void> {
-    return this.http.post<void>(this.baseUrl, post);
+    const headers = this.getHeaders();
+    return this.http.post<void>(this.baseUrl, post, {headers});
   }
   
   getPostById(postId: number): Observable<Post> {
-    return this.http.get<Post>(`${this.baseUrl}/${postId}`);
+    const headers = this.getHeaders();
+    return this.http.get<Post>(`${this.baseUrl}/${postId}`, {headers});
   }
 
   updatePost(postId: number, post: Partial<Post>): Observable<void> {
-    return this.http.patch<void>(`${this.baseUrl}/${postId}`, post);
+    const headers = this.getHeaders();
+    return this.http.patch<void>(`${this.baseUrl}/${postId}`, post, {headers});
   }
 
   getPostsSorted(sortBy: string): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}/sort?sortBy=${sortBy}`);
+    const headers = this.getHeaders();
+    return this.http.get<Post[]>(`${this.baseUrl}/sort?sortBy=${sortBy}`, {headers});
   }
   
   getFilteredPosts(filters: any): Observable<any[]> {
-    return this.http.get<Post[]>(`${this.baseUrl}/filtered`, { params: filters });
+    const headers = this.getHeaders();
+    console.log(headers);
+    return this.http.get<Post[]>(`${this.baseUrl}/filtered`, { params: filters, headers });
   }
 
-  getNotificationsByAuthor(author: string): Observable<any[]> {
-    return this.http.get<Notification[]>(`${this.baseUrl}/notifications/${author}`);
+  getNotificationsByReceiver(receiver: string): Observable<any[]> {
+    const headers = this.getHeaders();
+    return this.http.get<Notification[]>(`${this.baseUrl}/notification/${receiver}`, {headers});
   }
 }

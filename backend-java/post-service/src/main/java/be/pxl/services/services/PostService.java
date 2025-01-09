@@ -96,8 +96,8 @@ public class PostService implements IPostService {
     }
 
     @Override
-    public List<Notification> getNotificationsByAuthor(String author) {
-        return notificationRepository.findByAuthor(author);
+    public List<Notification> getNotificationsByReceiver(String receiver) {
+        return notificationRepository.findByReceiverOrderByCreatedDateDesc(receiver);
     }
 
 }

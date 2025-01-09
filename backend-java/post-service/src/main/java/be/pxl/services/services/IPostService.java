@@ -23,5 +23,5 @@ public interface IPostService {
 
     void saveNotification(NotificationRequest notificationRequest);
 
-    List<Notification> getNotificationsByAuthor(String author);
+    List<Notification> getNotificationsByReceiver(String receiver);
 }

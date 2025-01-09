@@ -16,6 +16,9 @@
     <ul class="space-y-4">
       @for (comment of comments; track comment.id) {
         <li class="p-4 border rounded shadow">
+          <div class="top-2 right-2 text-xs text-gray-500 font-bold">
+            ID: {{ comment.id }}
+          </div>
           <p class="text-sm text-gray-600 mb-1">
             By {{ comment.author }} on {{ comment.createdDate | date: 'MMM d, yyyy, h:mm a' }}
           </p>

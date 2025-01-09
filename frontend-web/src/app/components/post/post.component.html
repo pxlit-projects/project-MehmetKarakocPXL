@@ -1,51 +1,63 @@
 <div class="container mx-auto p-4">
-  <!-- Tabs for filtering posts -->
-  <div class="flex justify-center space-x-10 mb-6">
-    <button
-      (click)="setView('publishedPosts')"
-      [class.text-blue-500]="currentView === 'publishedPosts'"
-      class="text-lg font-semibold hover:text-blue-500"
-    >
-      All Published Posts
-    </button>
-    @if (isAdmin) {
+    <!-- Tabs for filtering posts -->
+    <div class="flex flex-wrap justify-center items-center space-x-4 md:space-x-6 lg:space-x-8 mb-6 border-b pb-4">
+      <!-- Filtering Tabs -->
       <button
-        (click)="setView('rejectedPosts')"
-        [class.text-blue-500]="currentView === 'rejectedPosts'"
-        class="text-lg font-semibold hover:text-blue-500"
+        (click)="setView('publishedPosts')"
+        [class.text-blue-500]="currentView === 'publishedPosts'"
+        class="text-lg font-semibold text-gray-600 hover:text-blue-500 transition"
       >
-        All Rejected Posts
+        All Published Posts
       </button>
+  
+      @if (isAdmin) {
+        <button
+          (click)="setView('rejectedPosts')"
+          [class.text-blue-500]="currentView === 'rejectedPosts'"
+          class="text-lg font-semibold text-gray-600 hover:text-blue-500 transition"
+        >
+          All Rejected Posts
+        </button>
+        <button
+          (click)="setView('pendingPosts')"
+          [class.text-blue-500]="currentView === 'pendingPosts'"
+          class="text-lg font-semibold text-gray-600 hover:text-blue-500 transition"
+        >
+          All Pending Posts
+        </button>
+      }
+  
       <button
-        (click)="setView('pendingPosts')"
-        [class.text-blue-500]="currentView === 'pendingPosts'"
-        class="text-lg font-semibold hover:text-blue-500"
+        (click)="setView('myPosts')"
+        [class.text-blue-500]="currentView === 'myPosts'"
+        class="text-lg font-semibold text-gray-600 hover:text-blue-500 transition"
       >
-        All Pending Posts
+        My Posts
       </button>
-    }
-    <button
-      (click)="setView('myPosts')"
-      [class.text-blue-500]="currentView === 'myPosts'"
-      class="text-lg font-semibold hover:text-blue-500"
-    >
-      My Posts
-    </button>
-    @if (isAdmin) {
+  
+      <!-- Add Post Button (Admin Only) -->
+      @if (isAdmin) {
+        <button
+          (click)="openAddPostModal()"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          Add Post
+        </button>
+      }
+  
+      <!-- Logout Button -->
       <button
-        (click)="openAddPostModal()"
-        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        (click)="logout()"
+        class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
       >
-        Add Post
+        Logout
       </button>
-    }
-    <button
-      (click)="logout()"
-      class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-    >
-      Logout
-    </button>
-  </div>
+  
+      <!-- Notifications Component -->
+      <div class="ml-4">
+        <app-notifications></app-notifications>
+      </div>
+    </div>
 
   <!-- Filtering Section -->
   <div class="flex flex-col sm:flex-row gap-4 mb-6 justify-center">
@@ -149,6 +161,10 @@
         [ngClass]="{'bg-yellow-100': post.isConcept && post.status === PostStatus.PENDING}"
         (click)="!isAdmin && navigateToComments(post.id)"
         >
+        <!-- Post ID on the Top Right -->
+      <div class="top-2 right-2 text-xs text-gray-500 font-bold">
+        ID: {{ post.id }}
+      </div>
         <h3 class="text-lg font-bold mb-2">{{ post.title }}</h3>
         <p class="text-sm text-gray-600 mb-2">
           By {{ post.author }} on {{ post.createdDate | date: 'MMM d, yyyy, h:mm a' }}
@@ -289,4 +305,6 @@
       </div>
     </div>
   }
+
+  
 </div>

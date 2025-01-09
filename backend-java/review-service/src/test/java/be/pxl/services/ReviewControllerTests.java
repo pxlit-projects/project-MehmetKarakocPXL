@@ -1,9 +1,9 @@
 package be.pxl.services;
 
 
+import be.pxl.services.controller.request.ReviewRequest;
 import be.pxl.services.domain.Review;
 import be.pxl.services.repository.ReviewRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -19,9 +19,6 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.springframework.http.MediaType;
 
-import java.util.List;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Testcontainers
 @AutoConfigureMockMvc
-public class ReviewTests {
+public class ReviewControllerTests {
 
     @Autowired
     MockMvc mockMvc;
@@ -56,49 +53,70 @@ public class ReviewTests {
         reviewRepository.deleteAll();
     }
 
-//    @Test
-//    public void testGetReviews() throws Exception {
-//        Review reviewFirst = Review.builder()
-//                .author("Muto")
-//                .content("Great post")
-//                .isApproved(true)
-//                .build();
-//
-//        Review reviewSecond = Review.builder()
-//                .author("Muto")
-//                .content("Great post")
-//                .isApproved(true)
-//                .build();
-//
-//
-//        Review savedReviewFirst = reviewRepository.save(reviewFirst);
-//        Review savedReviewSecond = reviewRepository.save(reviewSecond);
-//
-//        mockMvc.perform(MockMvcRequestBuilders.get("/api/review/"))
-//                .andExpect(status().isOk());
-//
-//        Optional<Review> retrievedReview = reviewRepository.findById(savedReview.getId());
-//
-//        assertTrue(retrievedReview.isPresent());
-//        assertEquals(review.getId(), retrievedReview.get().getId());
-//
-//    }
-
     @Test
-    public void testAddReview() throws Exception {
-        Review review = Review.builder()
-                .author("Muto")
-                .content("Great post")
-                .isApproved(true)
+    public void testAddReview_withAdminRole() throws Exception {
+        ReviewRequest reviewRequest = ReviewRequest.builder()
                 .postId(1L)
+                .author("User")
+                .content("Excellent post!")
                 .build();
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/review")
+                        .header("Role", "admin")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(review)))
+                        .content(objectMapper.writeValueAsString(reviewRequest)))
                 .andExpect(status().isCreated());
 
         assertEquals(1, reviewRepository.findAll().size());
     }
 
+    @Test
+    public void testAddReview_withNonAdminRole() throws Exception {
+        ReviewRequest reviewRequest = ReviewRequest.builder()
+                .postId(1L)
+                .author("User")
+                .content("Excellent post!")
+                .build();
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/review")
+                        .header("Role", "user")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(reviewRequest)))
+                .andExpect(status().isForbidden());
+
+        assertEquals(0, reviewRepository.findAll().size());
+    }
+
+    @Test
+    public void testGetReviews_withAdminRole() throws Exception {
+        Review review = Review.builder()
+                .postId(1L)
+                .content("Great post!")
+                .build();
+        reviewRepository.save(review);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/review")
+                        .header("Role", "admin"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetReviews_withUserRole() throws Exception {
+        Review review = Review.builder()
+                .postId(1L)
+                .content("Good post!")
+                .build();
+        reviewRepository.save(review);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/review")
+                        .header("Role", "user"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void testGetReviews_withInvalidRole() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/review")
+                        .header("Role", "guest"))
+                .andExpect(status().isForbidden());
+    }
 }

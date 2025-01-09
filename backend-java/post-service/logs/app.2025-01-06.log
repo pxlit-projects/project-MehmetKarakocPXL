@@ -1,0 +1,8 @@
+2025-01-06T10:39:43.746+0100 INFO               [main]                         be.pxl.services.PostControllerTests     - Starting PostTests using Java 22.0.1 with PID 72394 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/post-service)
+2025-01-06T10:39:43.755+0100 DEBUG              [main]                         be.pxl.services.PostControllerTests     - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-06T10:39:43.756+0100 INFO               [main]                         be.pxl.services.PostControllerTests     - No active profile set, falling back to 1 default profile: "default"
+2025-01-06T10:40:02.782+0100 INFO               [main]                         be.pxl.services.PostControllerTests     - Started PostTests in 22.739 seconds (process running for 44.793)
+2025-01-06T10:40:26.518+0100 INFO               [main]                         be.pxl.services.PostControllerTests     - Starting PostTests using Java 22.0.1 with PID 72431 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/post-service)
+2025-01-06T10:40:26.523+0100 DEBUG              [main]                         be.pxl.services.PostControllerTests     - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-06T10:40:26.524+0100 INFO               [main]                         be.pxl.services.PostControllerTests     - No active profile set, falling back to 1 default profile: "default"
+2025-01-06T10:40:38.336+0100 INFO               [main]                         be.pxl.services.PostControllerTests     - Started PostTests in 13.871 seconds (process running for 39.608)

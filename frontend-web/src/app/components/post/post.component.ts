@@ -8,16 +8,17 @@ import { Review } from '../../models/review.model';
 import { DatePipe } from '@angular/common'; // Import DatePipe
 import { AuthService } from '../../services/AuthService';
 import { Router } from '@angular/router';
+import { NotificationsComponent } from '../notifications/notifications.component';
 
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
   standalone: true,
-  imports: [NgIf, NgClass, FormsModule, DatePipe], // Add NgClass to imports
+  imports: [NgIf, NgClass, FormsModule, DatePipe, NotificationsComponent], 
   providers: [DatePipe],
-  
 })
+
 export class PostComponent implements OnInit {
   PostStatus = PostStatus; // Expose the enum to the template
   posts: Post[] = [];

@@ -3,7 +3,6 @@ package be.pxl.services;
 import be.pxl.services.controller.request.CommentRequest;
 import be.pxl.services.domain.Comment;
 import be.pxl.services.repository.CommentRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +18,6 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.springframework.http.MediaType;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Testcontainers
 @AutoConfigureMockMvc
-public class CommentTests {
+public class CommentControllerTests {
 
     @Autowired
     MockMvc mockMvc;
@@ -56,90 +54,139 @@ public class CommentTests {
     public void clearDatabase() {
         commentRepository.deleteAll();
     }
-
     @Test
-    public void testDeleteComment() throws Exception {
+    public void testGetAllCommentsByPostId_withUserRole() throws Exception {
+        Long postId = 1L;
         Comment comment = Comment.builder()
-                .author("Muto")
-                .content("This is a comment")
-                .postId(1L)
+                .postId(postId)
+                .author("User")
+                .content("Test comment")
                 .build();
-
         commentRepository.save(comment);
 
-        mockMvc.perform(delete("/api/comment/" + comment.getId()))
+        mockMvc.perform(get("/api/comment/" + postId)
+                        .header("Role", "user"))
                 .andExpect(status().isOk());
-
-        assertEquals(0, commentRepository.findAll().size());
     }
 
     @Test
-    public void testAddCommentToPost() throws Exception {
-        Comment comment = Comment.builder()
-                .author("Muto")
-                .content("This is a comment")
-                .postId(1L)
+    public void testGetAllCommentsByPostId_withInvalidRole() throws Exception {
+        mockMvc.perform(get("/api/comment/1")
+                        .header("Role", "guest"))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    public void testAddCommentToPost_withUserRole() throws Exception {
+        Long postId = 1L;
+        CommentRequest commentRequest = CommentRequest.builder()
+                .author("User")
+                .content("New comment")
                 .build();
 
-        String commentString = objectMapper.writeValueAsString(comment);
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/comment/" + comment.getPostId())
+        mockMvc.perform(post("/api/comment/" + postId)
+                        .header("Role", "user")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(commentString))
+                        .content(objectMapper.writeValueAsString(commentRequest)))
                 .andExpect(status().isCreated());
 
         assertEquals(1, commentRepository.findAll().size());
     }
 
     @Test
-    public void testGetAllCommentsByPostId() throws Exception {
-        Comment comment = Comment.builder()
-                .author("Muto")
-                .content("This is a comment")
-                .postId(1L)
+    public void testAddCommentToPost_withInvalidRole() throws Exception {
+        Long postId = 1L;
+        CommentRequest commentRequest = CommentRequest.builder()
+                .author("User")
+                .content("New comment")
                 .build();
 
-        Comment savedComment = commentRepository.save(comment);
+        mockMvc.perform(post("/api/comment/" + postId)
+                        .header("Role", "guest")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(commentRequest)))
+                .andExpect(status().isForbidden());
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/comment/" + savedComment.getId()))
-                .andExpect(status().isOk());
-
-        Optional<Comment> retrievedComment = commentRepository.findById(savedComment.getId());
-
-        assertTrue(retrievedComment.isPresent());
-        assertEquals(comment.getId(), retrievedComment.get().getId());
+        assertEquals(0, commentRepository.findAll().size());
     }
 
     @Test
-    public void testUpdateComment() throws Exception {
-        Comment commentFirst = Comment.builder()
-                .author("Muto")
-                .content("This is a comment")
-                .postId(1L)
-                .createdDate(null)
-                .build();
-
-        commentRepository.save(commentFirst);
-
-        Comment commentSecond = Comment.builder()
-                .author("updated")
-                .content("updated")
+    public void testUpdateComment_withUserRole() throws Exception {
+        Comment comment = Comment.builder()
+                .author("User")
+                .content("Original content")
                 .postId(1L)
                 .build();
+        commentRepository.save(comment);
 
-        mockMvc.perform(put("/api/comment/" + commentFirst.getId())
+        CommentRequest updatedCommentRequest = CommentRequest.builder()
+                .author("User")
+                .content("Updated content")
+                .build();
+
+        mockMvc.perform(put("/api/comment/" + comment.getId())
+                        .header("Role", "user")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(commentSecond)))
+                        .content(objectMapper.writeValueAsString(updatedCommentRequest)))
                 .andExpect(status().isOk());
 
-        Optional<Comment> updatedComment = commentRepository.findById(commentFirst.getId());
-
-        assertTrue(updatedComment.isPresent());
-        assertEquals(updatedComment.get().getContent(), commentSecond.getContent());
-        assertEquals(updatedComment.get().getAuthor(), commentSecond.getAuthor());
-        assertEquals(updatedComment.get().getPostId(), commentSecond.getPostId());
-
+        Comment updatedComment = commentRepository.findById(comment.getId()).orElseThrow();
+        assertEquals("Updated content", updatedComment.getContent());
     }
 
+    @Test
+    public void testUpdateComment_withInvalidRole() throws Exception {
+        Comment comment = Comment.builder()
+                .author("User")
+                .content("Original content")
+                .postId(1L)
+                .build();
+        commentRepository.save(comment);
 
+        CommentRequest updatedCommentRequest = CommentRequest.builder()
+                .author("User")
+                .content("Updated content")
+                .build();
+
+        mockMvc.perform(put("/api/comment/" + comment.getId())
+                        .header("Role", "guest")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(updatedCommentRequest)))
+                .andExpect(status().isForbidden());
+
+        Comment unchangedComment = commentRepository.findById(comment.getId()).orElseThrow();
+        assertEquals("Original content", unchangedComment.getContent());
+    }
+
+    @Test
+    public void testDeleteComment_withUserRole() throws Exception {
+        Comment comment = Comment.builder()
+                .author("User")
+                .content("Test comment")
+                .postId(1L)
+                .build();
+        commentRepository.save(comment);
+
+        mockMvc.perform(delete("/api/comment/" + comment.getId())
+                        .header("Role", "user"))
+                .andExpect(status().isOk());
+
+        assertEquals(0, commentRepository.findAll().size());
+    }
+
+    @Test
+    public void testDeleteComment_withInvalidRole() throws Exception {
+        Comment comment = Comment.builder()
+                .author("User")
+                .content("Test comment")
+                .postId(1L)
+                .build();
+        commentRepository.save(comment);
+
+        mockMvc.perform(delete("/api/comment/" + comment.getId())
+                        .header("Role", "guest"))
+                .andExpect(status().isForbidden());
+
+        assertEquals(1, commentRepository.findAll().size());
+    }
 }
