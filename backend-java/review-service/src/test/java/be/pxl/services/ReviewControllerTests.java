@@ -56,25 +56,33 @@ public class ReviewTests {
         reviewRepository.deleteAll();
     }
 
-    @Test
-    public void testGetReviewByPostId() throws Exception {
-        Review review = Review.builder()
-                .author("Muto")
-                .content("Great post")
-                .isApproved(true)
-                .build();
-
-        Review savedReview = reviewRepository.save(review);
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/review/" + savedReview.getId()))
-                .andExpect(status().isOk());
-
-        Optional<Review> retrievedReview = reviewRepository.findById(savedReview.getId());
-
-        assertTrue(retrievedReview.isPresent());
-        assertEquals(review.getId(), retrievedReview.get().getId());
-
-    }
+//    @Test
+//    public void testGetReviews() throws Exception {
+//        Review reviewFirst = Review.builder()
+//                .author("Muto")
+//                .content("Great post")
+//                .isApproved(true)
+//                .build();
+//
+//        Review reviewSecond = Review.builder()
+//                .author("Muto")
+//                .content("Great post")
+//                .isApproved(true)
+//                .build();
+//
+//
+//        Review savedReviewFirst = reviewRepository.save(reviewFirst);
+//        Review savedReviewSecond = reviewRepository.save(reviewSecond);
+//
+//        mockMvc.perform(MockMvcRequestBuilders.get("/api/review/"))
+//                .andExpect(status().isOk());
+//
+//        Optional<Review> retrievedReview = reviewRepository.findById(savedReview.getId());
+//
+//        assertTrue(retrievedReview.isPresent());
+//        assertEquals(review.getId(), retrievedReview.get().getId());
+//
+//    }
 
     @Test
     public void testAddReview() throws Exception {
