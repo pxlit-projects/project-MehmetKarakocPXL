@@ -1,0 +1,68 @@
+2024-12-26T21:13:54.999+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Starting ReviewTests using Java 22.0.1 with PID 25767 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2024-12-26T21:13:55.000+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T21:13:55.000+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T21:13:58.083+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Started ReviewTests in 3.702 seconds (process running for 16.771)
+2024-12-26T21:28:20.504+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Starting ReviewTests using Java 22.0.1 with PID 26302 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2024-12-26T21:28:20.505+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T21:28:20.505+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T21:28:23.549+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Started ReviewTests in 3.597 seconds (process running for 17.366)
+2024-12-26T21:28:46.881+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Starting ReviewTests using Java 22.0.1 with PID 26329 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2024-12-26T21:28:46.882+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T21:28:46.882+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T21:28:49.915+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Started ReviewTests in 3.599 seconds (process running for 16.349)
+2024-12-26T22:41:52.957+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Starting ReviewTests using Java 22.0.1 with PID 27089 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2024-12-26T22:41:52.958+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T22:41:52.958+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T22:41:56.413+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Started ReviewTests in 4.004 seconds (process running for 17.054)
+2024-12-26T23:47:28.725+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Starting ReviewTests using Java 22.0.1 with PID 30207 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2024-12-26T23:47:28.726+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:47:28.727+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:47:31.732+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Started ReviewTests in 3.534 seconds (process running for 16.569)
+2024-12-26T23:47:32.450+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1
+2024-12-26T23:48:59.579+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Starting ReviewTests using Java 22.0.1 with PID 30263 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2024-12-26T23:48:59.580+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:48:59.580+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:49:02.593+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Started ReviewTests in 3.528 seconds (process running for 16.245)
+2024-12-26T23:49:03.166+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1
+2024-12-26T23:49:37.125+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Starting ReviewTests using Java 22.0.1 with PID 30298 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2024-12-26T23:49:37.126+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2024-12-26T23:49:37.126+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - No active profile set, falling back to 1 default profile: "default"
+2024-12-26T23:49:40.121+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests   - Started ReviewTests in 3.56 seconds (process running for 16.299)
+2024-12-26T23:49:40.820+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1
+2025-01-08T20:50:20.399+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Starting ReviewControllerTests using Java 22.0.1 with PID 96610 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T20:50:20.400+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T20:50:20.400+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T20:50:25.243+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Started ReviewControllerTests in 5.434 seconds (process running for 19.191)
+2025-01-08T20:50:26.652+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1
+2025-01-08T20:55:08.758+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Starting ReviewControllerTests using Java 22.0.1 with PID 96801 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T20:55:08.759+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T20:55:08.760+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T20:55:16.068+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Started ReviewControllerTests in 8.549 seconds (process running for 27.832)
+2025-01-08T20:55:17.208+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1
+2025-01-08T20:55:30.697+0100 INFO               [main]                         be.pxl.services.ReviewTests   - Starting ReviewTests using Java 22.0.1 with PID 96801 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T20:55:30.697+0100 DEBUG              [main]                         be.pxl.services.ReviewTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T20:55:30.697+0100 INFO               [main]                         be.pxl.services.ReviewTests   - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T20:55:31.862+0100 INFO               [main]                         be.pxl.services.ReviewTests   - Started ReviewTests in 1.26 seconds (process running for 43.627)
+2025-01-08T20:56:58.912+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Starting ReviewControllerTests using Java 22.0.1 with PID 96858 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T20:56:58.915+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T20:56:58.916+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T20:57:07.136+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Started ReviewControllerTests in 9.927 seconds (process running for 30.56)
+2025-01-08T20:57:08.431+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1
+2025-01-08T20:57:20.606+0100 INFO               [main]                         be.pxl.services.ReviewTests   - Starting ReviewTests using Java 22.0.1 with PID 96858 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T20:57:20.606+0100 DEBUG              [main]                         be.pxl.services.ReviewTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T20:57:20.606+0100 INFO               [main]                         be.pxl.services.ReviewTests   - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T20:57:22.168+0100 INFO               [main]                         be.pxl.services.ReviewTests   - Started ReviewTests in 1.675 seconds (process running for 45.592)
+2025-01-08T20:59:41.001+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Starting ReviewControllerTests using Java 22.0.1 with PID 96962 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T20:59:41.002+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T20:59:41.003+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T20:59:44.863+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Started ReviewControllerTests in 4.472 seconds (process running for 21.137)
+2025-01-08T20:59:45.581+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1
+2025-01-08T20:59:57.849+0100 INFO               [main]                         be.pxl.services.ReviewTests   - Starting ReviewTests using Java 22.0.1 with PID 96962 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T20:59:57.849+0100 DEBUG              [main]                         be.pxl.services.ReviewTests   - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T20:59:57.849+0100 INFO               [main]                         be.pxl.services.ReviewTests   - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T20:59:59.076+0100 INFO               [main]                         be.pxl.services.ReviewTests   - Started ReviewTests in 1.333 seconds (process running for 35.349)
+2025-01-08T21:00:45.094+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Starting ReviewControllerTests using Java 22.0.1 with PID 97005 (started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/review-service)
+2025-01-08T21:00:45.095+0100 DEBUG              [main]                         be.pxl.services.ReviewControllerTests - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-08T21:00:45.096+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - No active profile set, falling back to 1 default profile: "default"
+2025-01-08T21:00:53.069+0100 INFO               [main]                         be.pxl.services.ReviewControllerTests - Started ReviewControllerTests in 9.343 seconds (process running for 26.218)
+2025-01-08T21:00:54.699+0100 INFO               [main]                         be.pxl.services.controller.ReviewController - Review added for post ID: 1

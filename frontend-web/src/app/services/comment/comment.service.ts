@@ -3,14 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Comment } from '../../models/comment.model';
 import { AuthService } from '../../services/AuthService';
-
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class CommentService {
-  private baseUrl = 'http://127.0.0.1:8084/comment/api/comment'; 
+  private baseUrl = environment.apiUrlComment;
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 

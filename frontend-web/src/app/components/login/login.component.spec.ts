@@ -1,27 +1,32 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AuthService } from '../../services/AuthService';
+import { Router } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let mockAuthService: jasmine.SpyObj<AuthService>;
-  let mockRouter: jasmine.SpyObj<Router>;
+  let authService: jasmine.SpyObj<AuthService>;
+  let router: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    mockAuthService = jasmine.createSpyObj('AuthService', ['setUsername', 'setRole']);
-    mockRouter = jasmine.createSpyObj('Router', ['navigate']);
+    const authServiceSpy = jasmine.createSpyObj('AuthService', ['setUsername', 'setRole']);
+    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
-      imports: [LoginComponent, FormsModule],
+      imports: [ReactiveFormsModule, LoginComponent],
       providers: [
-        { provide: AuthService, useValue: mockAuthService },
-        { provide: Router, useValue: mockRouter }
+        { provide: AuthService, useValue: authServiceSpy },
+        { provide: Router, useValue: routerSpy }
       ]
     }).compileComponents();
 
+    authService = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
+    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -31,52 +36,59 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with default values', () => {
-    expect(component.username).toBe('');
-    expect(component.role).toBe('user');
+  it('should initialize with empty username and default role', () => {
+    expect(component.loginForm.get('username')?.value).toBe('');
+    expect(component.loginForm.get('role')?.value).toBe('user');
   });
 
   it('should update role when selectRole is called', () => {
     component.selectRole('admin');
-    expect(component.role).toBe('admin');
+    expect(component.loginForm.get('role')?.value).toBe('admin');
   });
 
-  describe('login', () => {
-    it('should login successfully with valid username and role', () => {
-      component.username = 'testUser';
-      component.role = 'user';
-      
-      component.login();
+  it('should not login with invalid form', () => {
+    // Form is invalid because username is empty
+    component.login();
+    expect(authService.setUsername).not.toHaveBeenCalled();
+    expect(authService.setRole).not.toHaveBeenCalled();
+    expect(router.navigate).not.toHaveBeenCalled();
+  });
 
-      expect(mockAuthService.setUsername).toHaveBeenCalledWith('testUser');
-      expect(mockAuthService.setRole).toHaveBeenCalledWith('user');
-      expect(mockRouter.navigate).toHaveBeenCalledWith(['/posts']);
+  it('should login with valid form', () => {
+    component.loginForm.patchValue({
+      username: 'testUser',
+      role: 'user'
     });
 
-    it('should not login with empty username', () => {
-      spyOn(window, 'alert');
-      component.username = '';
-      component.role = 'user';
-      
-      component.login();
+    component.login();
 
-      expect(mockAuthService.setUsername).not.toHaveBeenCalled();
-      expect(mockAuthService.setRole).not.toHaveBeenCalled();
-      expect(mockRouter.navigate).not.toHaveBeenCalled();
-      expect(window.alert).toHaveBeenCalledWith('Please enter a username and select a role!');
+    expect(authService.setUsername).toHaveBeenCalledWith('testUser');
+    expect(authService.setRole).toHaveBeenCalledWith('user');
+    expect(router.navigate).toHaveBeenCalledWith(['/posts']);
+  });
+
+  it('should reset form after failed login', () => {
+    component.loginForm.patchValue({
+      username: '',
+      role: 'user'
     });
 
-    it('should not login with empty role', () => {
-      spyOn(window, 'alert');
-      component.username = 'testUser';
-      component.role = '';
-      
-      component.login();
+    component.login();
 
-      expect(mockAuthService.setUsername).not.toHaveBeenCalled();
-      expect(mockAuthService.setRole).not.toHaveBeenCalled();
-      expect(mockRouter.navigate).not.toHaveBeenCalled();
-      expect(window.alert).toHaveBeenCalledWith('Please enter a username and select a role!');
+    expect(authService.setUsername).not.toHaveBeenCalled();
+    expect(router.navigate).not.toHaveBeenCalled();
+  });
+
+  it('should handle admin role login', () => {
+    component.loginForm.patchValue({
+      username: 'testUser',
+      role: 'admin'
     });
+
+    component.login();
+
+    expect(authService.setUsername).toHaveBeenCalledWith('testUser');
+    expect(authService.setRole).toHaveBeenCalledWith('admin');
+    expect(router.navigate).toHaveBeenCalledWith(['/posts']);
   });
 });

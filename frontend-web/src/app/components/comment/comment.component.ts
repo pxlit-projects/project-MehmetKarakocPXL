@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgClass } from '@angular/common'; // Add NgClass here
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CommentService } from '../../services/comment/comment.service';
 import { PostService } from '../../services/post/post.service';
 import { Post } from '../../models/post.model';
 import { Comment } from '../../models/comment.model';
-import { DatePipe } from '@angular/common'; // Import DatePipe
+import { DatePipe } from '@angular/common'; 
 import { AuthService } from '../../services/AuthService';
 
 @Component({

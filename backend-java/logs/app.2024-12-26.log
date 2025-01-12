@@ -1,5 +1,0 @@
-2024-12-26T00:37:13.087+0100 INFO               [http-nio-8081-exec-5]         be.pxl.services.controller.CommentController - Comment added to post
-2024-12-26T23:53:35.471+0100 INFO               [main]                         be.pxl.services.CommentServiceApplication - Starting CommentServiceApplication using Java 22.0.1 with PID 30483 (/Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java/comment-service/target/classes started by furkan in /Users/furkan/Desktop/jaar3/project-MehmetKarakocPXL/backend-java)
-2024-12-26T23:53:35.475+0100 DEBUG              [main]                         be.pxl.services.CommentServiceApplication - Running with Spring Boot v3.3.5, Spring v6.1.14
-2024-12-26T23:53:35.477+0100 INFO               [main]                         be.pxl.services.CommentServiceApplication - No active profile set, falling back to 1 default profile: "default"
-2024-12-26T23:53:39.359+0100 INFO               [main]                         be.pxl.services.CommentServiceApplication - Started CommentServiceApplication in 4.687 seconds (process running for 5.299)
